@@ -70,6 +70,11 @@
 		.sourcesTbl
 		{
 			width				: inherit;
+		/*	border-spacing		: 5px;
+			border-collapse		: collapse;
+			padding				: 5px 5px 5px 5px;
+			margin				: 5px 5px 5px 5px;
+		*/
 		}
 		
 		#taFunc
@@ -520,15 +525,15 @@ function showSelectedSource()
 function appendDemoDataType(i, dtName, dtFormatDesc, dtValidValuePattern)
 {
 	var tr, tdName, tdDesc, tdInput, tdErrMsg, inputTxt;
-	tr			= document.createElement("tr");
-	tr.id			= "trDataType_"+i;
-	tdName			= document.createElement("td");
-	tdName.innerHTML	= dtName;
-	tdDesc			= document.createElement("td");
-	tdDesc.innerHTML	= dtFormatDesc;
-	tdInput			= document.createElement("td");
-	inputTxt		= document.createElement("input");
-	inputTxt.type		= "text";
+	tr						= document.createElement("tr");
+	tr.id					= "trDataType_"+i;
+	tdName					= document.createElement("td");
+	tdName.innerHTML		= dtName;
+	tdDesc					= document.createElement("td");
+	tdDesc.innerHTML		= dtFormatDesc;
+	tdInput					= document.createElement("td");
+	inputTxt				= document.createElement("input");
+	inputTxt.type			= "text";
 	inputTxt.setAttribute(DATA_TYPE_ATTRIBUTE_NAME, dtName);
 	inputTxt.setAttribute("title", dtFormatDesc);
 	if(isNonZeroLengthString(dtValidValuePattern))
@@ -542,10 +547,10 @@ function appendDemoDataType(i, dtName, dtFormatDesc, dtValidValuePattern)
 	
 	tdInput.appendChild(inputTxt);
 	
-	tdErrMsg		= document.createElement("td");
+	tdErrMsg				= document.createElement("td");
 	tdErrMsg.setAttribute("id", errTdIdPrefix + dtName);
 	tdErrMsg.setAttribute("class","errMsg");
-	tdErrMsg.innerHTML	= noErrMsgText;
+	tdErrMsg.innerHTML		= noErrMsgText;
 	
 	tr.appendChild(tdName);
 	tr.appendChild(tdDesc);
@@ -567,10 +572,10 @@ function setDemoInputs()
 		{
 			var tempDt = localDto.getType(dataTypesStub[i]);
 			appendDemoDataType(	i,
-						dataTypesStub[i],
-						tempDt.formatDesc,
-						tempDt.validValuePattern
-					);
+									dataTypesStub[i],
+									tempDt.formatDesc,
+									tempDt.validValuePattern
+								);
 		}
 		
 		setPostEventValidation();
@@ -588,6 +593,9 @@ function loadSource()
 	var sourceInput = $("#"+selectedSource).val();
 	console.log("load source called", selectedSource, sourceInput);
 	localDto.load(sourceInput, setDemoInputs);
+	//console.log("localDto.toString():", localDto.toString());
+	//console.log("localDto.toXml():", localDto.toXml());
+	//console.log("localDto.toXmlString():", localDto.toXmlString());
 }
 
 function setPostEventValidation()
@@ -640,12 +648,24 @@ $(document).ready(
 					}	
 				);
 		}
+		/*else
+		{
+			$("#filesList option[value='']").remove();
+		}*/
 	}
 );
+/*
+function escapeSlashs(strPatt)
+{
+	var temp = strPatt.replace(/\\/gi,"\\\\");
+	return temp;
+}
+*/
+//$("#btnAddNewDataType").click(addNewDataType);
 
 function setTaFuncDefaultValue()
 {
-	var demoHandlerFunc	= $("#scrDemoHandler").text();
+	var demoHandlerFunc		= $("#scrDemoHandler").text();
 	var demoHandlerFuncBody	= demoHandlerFunc.replace(/^([\s\S]*?\{)([\s\S]*)(\})$/gm, "$2").replace(/\t/gm,"  ");
 	$("#taFunc").val(demoHandlerFuncBody.substring(1,demoHandlerFuncBody.length-2));
 }
@@ -667,7 +687,15 @@ function compileIt()
 
 	newScript.text	= "function " + testFuncName + "(e){\n" + scriptText + "\n}";
 	document.body.appendChild(newScript);
+//
+/* 
+	var scriptText = $("#taFunc").val();
+	var scriptBlock = '<script type="text/javascript" id="scriptContainer">'+scriptText+'<\/script>';
 	
+	$("#scriptContainer").remove();
+	
+	$(scriptBlock).insertAfter('body');
+*/	
 	$("#demoTblBody input").each( inputsetResetAttrFuncCreator(testFuncOnEventKeyValue) );
 
 }
