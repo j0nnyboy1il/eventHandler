@@ -183,8 +183,22 @@
       "name":"ip",
       "invalidChars":"[^0-9\\.]",
       "validPattern":"^((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?(\\.)?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\7?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\7?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?$",
-      "validValuePattern":"^((2((5[0-5])|([0-4]\\d)))|([01]?\\d{0,2}))(\\.)((2((5[0-5])|([0-4]\\d)))|([01]?\\d{0,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{0,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{0,2}))$",
+      "validValuePattern":"^((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))(\\.)((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))$",
       "formatDesc":"IP address (ddd.ddd.ddd.ddd) eg: 127.0.0.1"
+    },
+	{
+      "name":"colorHex",
+      "invalidChars":"[^a-fA-F\\d#]",
+      "validPattern":"^#?[a-fA-F\\d]{0,6}$",
+      "validValuePattern":"^#[a-fA-F\\d]{6}$",
+      "formatDesc":"Hexadecimal color value. e.g.:#789ABC"
+    },
+	{
+      "name":"colorRgb",
+      "invalidChars":"[^rgb\\(\\)\\,\\d]",
+      "validPattern":"^r?g?b?\\(?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?(\\,)?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\7?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\)?$",
+      "validValuePattern":"^rgb\\(((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))(\\,)((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\)$",
+      "formatDesc":"RGB color value. e.g.: rgb(0,0,0)"
     },
     {
       "name":"alpha",
@@ -281,6 +295,20 @@
     <invalidChars>[^0-9]</invalidChars>
     <validPattern>^\d*$</validPattern>
     <validValuePattern>^\d+$</validValuePattern>
+  </dataTypes>
+  <dataTypes>
+    <name>colorHex</name>
+    <formatDesc>Hexadecimal color value. e.g.:#789ABC</formatDesc>
+    <invalidChars>[^a-fA-F\d#]</invalidChars>
+    <validPattern>^#?[a-fA-F\d]{0,6}$</validPattern>
+	<validValuePattern>^#[a-fA-F\d]{6}$</validValuePattern>
+  </dataTypes>
+  <dataTypes>
+    <name>colorRgb</name>
+    <formatDesc>RGB color value. e.g.: rgb(0,0,0)</formatDesc>
+    <invalidChars>[^rgb\(\)\,\d]</invalidChars>
+    <validPattern>^r?g?b?\(?((2?((5?[0-5]?)|([0-4]?\d?)))|([01]?\d{0,2}))?(\,)?((2?((5?[0-5]?)|([0-4]?\d?)))|([01]?\d{0,2}))?\7?((2?((5?[0-5]?)|([0-4]?\d?)))|([01]?\d{0,2}))?\)?$</validPattern>
+	<validValuePattern>^rgb\(((2((5[0-5])|([0-4]\d)))|([01]?\d{1,2}))(\,)((2((5[0-5])|([0-4]\d)))|([01]?\d{1,2}))\7((2((5[0-5])|([0-4]\d)))|([01]?\d{1,2}))\)$</validValuePattern>
   </dataTypes>
   <dataTypes>
     <name>ip</name>
