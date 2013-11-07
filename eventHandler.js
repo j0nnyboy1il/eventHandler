@@ -1,31 +1,31 @@
-var DATA_TYPES_PROP_NAME		= "dataTypes";
+var DATA_TYPES_PROP_NAME			= "dataTypes";
 var XNL_ROOT_NAME				= "dt";
-var DATA_TYPE_ATTRIBUTE_NAME	= ("dataType").toLowerCase();
-var POST_EVENT_VALIDATION_ATTRIBUTE_NAME = ("postEventValidation").toLowerCase();
-var DELETE_INVALID_CHARS_ATTRIBUTE_NAME = ("deleteInvalidChars").toLowerCase();
-var ONSUBMIT_VALIDATION_ATTRIBUTE_NAME = ("pattern").toLowerCase();
-var	KEYPRESS					= "keypress";
-var PASTE						= "paste";
-var DROP						= "drop";
-var HANDLED_EVENTS_ARR			= [KEYPRESS, PASTE, DROP];
+var DATA_TYPE_ATTRIBUTE_NAME			= ("dataType").toLowerCase();
+var POST_EVENT_VALIDATION_ATTRIBUTE_NAME 	= ("postEventValidation").toLowerCase();
+var DELETE_INVALID_CHARS_ATTRIBUTE_NAME 	= ("deleteInvalidChars").toLowerCase();
+var ONSUBMIT_VALIDATION_ATTRIBUTE_NAME 		= ("pattern").toLowerCase();
+var KEYPRESS					= "keypress";
+var PASTE					= "paste";
+var DROP					= "drop";
+var HANDLED_EVENTS_ARR				= [KEYPRESS, PASTE, DROP];
 
-var XML_NS						= "http://www.w3.org/2000/svg";
+var XML_NS					= "http://www.w3.org/2000/svg";
 
-var ERROR						= -1;
-var INIT						= 0;
-var PARSING						= 1;
-var LOADING						= 2;
+var ERROR					= -1;
+var INIT					= 0;
+var PARSING					= 1;
+var LOADING					= 2;
 var VALIDATING					= 3;
-var READY						= 4;
-var DEFAULT						= 5;
+var READY					= 4;
+var DEFAULT					= 5;
 
 var JSON_TYPE					= "JSON";
 var XML_TYPE					= "XML";
 var UNHANDLED_TYPE				= "OTHER";
 
-var ERROR_CODE_PROP_NAME		= "code";
-var ERROR_MESSAGE_PROP_NAME		= "message";
-var ERROR_EXCEPTION_PROP_NAME	= "exception";
+var ERROR_CODE_PROP_NAME			= "code";
+var ERROR_MESSAGE_PROP_NAME			= "message";
+var ERROR_EXCEPTION_PROP_NAME			= "exception";
 
 var dtSchema = {
     "type" : "object",
@@ -681,7 +681,7 @@ function DataTypes(input, stateChange)
 	{
 		if(this.isXmlStr(response) || (this.objectType(response)==XML_TYPE) )
 		{
-			this.loadXml(response);
+			this.loadXML(response);
 		}
 		else if(this.isJsonStr(response) || (this.objectType(response)==JSON_TYPE))
 		{
