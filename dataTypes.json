@@ -21,6 +21,20 @@
       "validValuePattern":"^\\d+$",
       "formatDesc":"None negative integer"
     },
+	{
+      "name":"colorHex",
+      "invalidChars":"[^a-fA-F\\d#]",
+      "validPattern":"^#?[a-fA-F\\d]{0,6}$",
+      "validValuePattern":"^#[a-fA-F\\d]{6}$",
+      "formatDesc":"Hexadecimal color value. e.g.:#789ABC"
+    },
+    {
+      "name":"colorRgb",
+      "invalidChars":"[^rgb\\(\\)\\,\\d]",
+      "validPattern":"^r?g?b?\\(?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?(\\,)?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\7?((2?((5?[0-5]?)|([0-4]?\\d?)))|([01]?\\d{0,2}))?\\)?$",
+      "validValuePattern":"^rgb\\(((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))(\\,)((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\7((2((5[0-5])|([0-4]\\d)))|([01]?\\d{1,2}))\\)$",
+      "formatDesc":"RGB color value. e.g.: rgb(0,0,0)"
+    },
     {
       "name":"ip",
       "invalidChars":"[^0-9\\.]",
